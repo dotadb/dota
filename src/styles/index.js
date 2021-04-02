@@ -3,7 +3,7 @@ export const colors = {
   accent: '#a5e0f3',
 
   foreground: '#fff',
-  foregroundLight: '#e2dace',
+  foregroundLight: '#8a8a8a',
 
   background: '#000',
   backgroundLight: '#25282a'
@@ -12,7 +12,7 @@ export const colors = {
 export const layout = {
   margin: 20,
   padding: 10,
-  radius: 5
+  radius: 10
 }
 
 export const fonts = {
