@@ -98,6 +98,7 @@ export const Hero = ({
             <Video
               source={videoAbility(hero.name, ability.name)}
               style={{
+                backgroundColor: colors.backgroundLight,
                 height: width * (756 / 1344),
                 marginLeft: -layout.margin,
                 marginTop: layout.padding,

@@ -2,8 +2,6 @@ import { Video as Player } from 'expo-av'
 import React, { useState } from 'react'
 import { Pressable } from 'react-native'
 
-import { colors } from '../styles'
-
 export const Video = ({ source, style }) => {
   const [muted, setMuted] = useState(true)
 
@@ -14,12 +12,7 @@ export const Video = ({ source, style }) => {
         isMuted={muted}
         shouldPlay
         source={source}
-        style={[
-          {
-            backgroundColor: colors.backgroundLight
-          },
-          style
-        ]}
+        style={style}
       />
     </Pressable>
   )
