@@ -6,7 +6,7 @@ export const Video = ({ source, style }) => {
   const [muted, setMuted] = useState(true)
 
   return (
-    <Pressable onPress={() => setMuted(muted)}>
+    <Pressable onPress={() => setMuted(!muted)}>
       <Player
         isLooping
         isMuted={muted}
