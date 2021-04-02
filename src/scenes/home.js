@@ -37,6 +37,7 @@ export const Home = ({ navigation: { navigate } }) => {
         }}
         data={heroes}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
+        keyExtractor={({ name }) => name}
         refreshControl={<Refresh onRefresh={fetch} refreshing={loading} />}
         renderItem={({ item }) => (
           <Pressable

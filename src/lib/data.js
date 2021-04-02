@@ -11,8 +11,6 @@ export const heroAbilityDescription = (ability) =>
         ({ name }) => `%${name}%` === id
       )
 
-      console.log(id, value)
-
       return value
         ? value.values_float.length > 0
           ? value.values_float[0]
