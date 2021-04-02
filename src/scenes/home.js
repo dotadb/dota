@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import { useCallback } from 'react'
-import { FlatList, Pressable } from 'react-native'
+import { FlatList, Pressable, RefreshControl } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import { Header } from '../components/header'
 import { HeroCard } from '../components/hero'
-import { Refresh } from '../components/refresh'
 import { useHeroes } from '../stores/heroes'
+import { colors } from '../styles'
 
 export const Home = ({ navigation: { navigate } }) => {
   const { bottom } = useSafeAreaInsets()
@@ -40,7 +40,14 @@ export const Home = ({ navigation: { navigate } }) => {
         }}
         data={heroes}
         keyExtractor={({ name }) => name}
-        refreshControl={<Refresh onRefresh={fetch} refreshing={loading} />}
+        refreshControl={
+          <RefreshControl
+            colors={[colors.accent]}
+            onRefresh={fetch}
+            refreshing={loading}
+            tintColor={colors.accent}
+          />
+        }
         renderItem={({ item }) => renderItem(item)}
       />
     </>

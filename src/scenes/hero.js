@@ -1,5 +1,12 @@
 import React, { useEffect } from 'react'
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
+import {
+  Image,
+  RefreshControl,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View
+} from 'react-native'
 import {
   useSafeAreaFrame,
   useSafeAreaInsets
@@ -12,7 +19,6 @@ import {
   videoAbility
 } from '../assets'
 import { Loading } from '../components/loading'
-import { Refresh } from '../components/refresh'
 import { Video } from '../components/video'
 import {
   heroAbilityDescription,
@@ -50,7 +56,12 @@ export const Hero = ({
         paddingTop: layout.margin
       }}
       refreshControl={
-        <Refresh onRefresh={() => fetch(id)} refreshing={loading} />
+        <RefreshControl
+          colors={[colors.accent]}
+          onRefresh={() => fetch(id)}
+          refreshing={loading}
+          tintColor={colors.accent}
+        />
       }
       style={{
         marginTop: top
