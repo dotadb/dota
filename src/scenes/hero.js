@@ -89,6 +89,52 @@ export const Hero = ({
       <Text style={styles.title}>History</Text>
       <Text style={styles.history}>{hero.bio_loc}</Text>
 
+      <Text style={[styles.title, styles.space]}>Attributes</Text>
+      <View style={styles.stats}>
+        <View style={[styles.statsCard, styles.statsCardHealth]}>
+          <Text style={styles.statsCardLabel}>{hero.max_health}</Text>
+          <Text style={styles.statsCardLabel}>
+            +{hero.health_regen.toFixed(1)}
+          </Text>
+        </View>
+        <View style={[styles.statsCard, styles.statsCardMana]}>
+          <Text style={styles.statsCardLabel}>{hero.max_mana}</Text>
+          <Text style={styles.statsCardLabel}>
+            +{hero.mana_regen.toFixed(1)}
+          </Text>
+        </View>
+      </View>
+      <View style={styles.stats}>
+        {[
+          { id: 0, key: 'str' },
+          { id: 1, key: 'agi' },
+          { id: 2, key: 'int' }
+        ].map((attribute) => (
+          <View key={attribute.key} style={styles.attributeCard}>
+            <Image
+              source={imgHeroAttribute(attribute.id)}
+              style={styles.attributeIcon}
+            />
+            <View style={styles.attributeCardDetails}>
+              <Text style={styles.attributeCardLabel}>
+                {hero[`${attribute.key}_base`]}
+              </Text>
+              <Text
+                style={[
+                  styles.attributeCardLabel,
+                  styles.attributeCardLabelGain
+                ]}>
+                +{hero[`${attribute.key}_gain`].toFixed(1)}
+              </Text>
+            </View>
+          </View>
+        ))}
+      </View>
+
+      <Text style={[styles.title, styles.space]}>Roles</Text>
+
+      <Text style={[styles.title, styles.space]}>Stats</Text>
+
       <Text style={[styles.title, styles.space]}>Abilities</Text>
       <View style={styles.abilities}>
         {hero.abilities.map((ability) => (
@@ -171,6 +217,48 @@ const styles = StyleSheet.create({
   },
   space: {
     marginTop: layout.margin
+  },
+  stats: {
+    flexDirection: 'row',
+    marginTop: layout.padding
+  },
+  statsCard: {
+    borderRadius: layout.radius / 2,
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  statsCardHealth: {
+    backgroundColor: '#286323'
+  },
+  statsCardMana: {
+    backgroundColor: '#1056db',
+    marginLeft: layout.margin
+  },
+  statsCardLabel: {
+    ...typography.base,
+    ...fonts.bodyBold,
+    color: colors.foreground,
+    padding: layout.padding
+  },
+  attributeCard: {
+    alignItems: 'center',
+    flex: 1,
+    flexDirection: 'row'
+  },
+  attributeCardDetails: {
+    flexDirection: 'row',
+    marginLeft: layout.padding
+  },
+  attributeCardLabel: {
+    ...typography.xl,
+    ...fonts.bodyBold,
+    color: colors.foreground
+  },
+  attributeCardLabelGain: {
+    ...typography.lg,
+    color: colors.foregroundLight,
+    marginLeft: layout.padding / 2
   },
   abilities: {
     marginTop: -layout.margin
