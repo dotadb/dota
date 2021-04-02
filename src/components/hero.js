@@ -1,6 +1,7 @@
 import React from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
 import { useSafeAreaFrame } from 'react-native-safe-area-context'
+
 import { imgHero, imgHeroAttribute } from '../assets'
 import { colors, fonts, layout, typography } from '../styles'
 
@@ -29,6 +30,7 @@ export const HeroCard = ({ hero }) => {
 }
 
 const styles = StyleSheet.create({
+  main: {},
   content: {
     alignItems: 'center',
     flexDirection: 'row',
