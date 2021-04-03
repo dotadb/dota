@@ -12,19 +12,11 @@ import {
   useSafeAreaInsets
 } from 'react-native-safe-area-context'
 
-import {
-  imgAbility,
-  imgHeroAttribute,
-  imgHeroFull,
-  videoAbility
-} from '../assets'
+import { imgAbility, imgHeroAttribute, videoAbility } from '../assets'
+import { HeroInfo } from '../components/hero-info'
 import { Loading } from '../components/loading'
 import { Video } from '../components/video'
-import {
-  heroAbilityDescription,
-  heroAttribute,
-  heroDescription
-} from '../lib/data'
+import { heroAbilityDescription } from '../lib/data'
 import { useHero } from '../stores/hero'
 import { colors, fonts, layout, typography } from '../styles'
 
@@ -66,28 +58,7 @@ export const Hero = ({
       style={{
         marginTop: top
       }}>
-      <View style={styles.attribute}>
-        <Image
-          source={imgHeroAttribute(hero.primary_attr)}
-          style={styles.attributeIcon}
-        />
-        <Text style={styles.attributeLabel}>
-          {heroAttribute(hero.primary_attr)}
-        </Text>
-      </View>
-      <Text style={styles.name}>{hero.name_loc}</Text>
-      <Text style={styles.tagline}>{hero.npe_desc_loc.toUpperCase()}</Text>
-      <Text style={styles.description}>{heroDescription(hero.hype_loc)}</Text>
-      <Image
-        source={imgHeroFull(hero.name)}
-        style={{
-          height: width,
-          marginVertical: layout.padding,
-          width
-        }}
-      />
-      <Text style={styles.title}>History</Text>
-      <Text style={styles.history}>{hero.bio_loc}</Text>
+      <HeroInfo hero={hero} />
 
       <Text style={[styles.title, styles.space]}>Attributes</Text>
       <View style={styles.stats}>
@@ -174,46 +145,14 @@ export const Hero = ({
 }
 
 const styles = StyleSheet.create({
-  attribute: {
-    alignItems: 'center',
-    flexDirection: 'row'
-  },
   attributeIcon: {
     height: 32,
     width: 32
-  },
-  attributeLabel: {
-    ...fonts.bodyBold,
-    ...typography.xl,
-    color: colors.foregroundLight,
-    marginLeft: layout.padding
-  },
-  name: {
-    ...fonts.titleBold,
-    ...typography.xxxl,
-    color: colors.foreground,
-    marginTop: layout.margin
-  },
-  tagline: {
-    ...fonts.bodyBold,
-    ...typography.base,
-    color: colors.accent
-  },
-  description: {
-    ...fonts.body,
-    ...typography.sm,
-    color: colors.foreground,
-    marginTop: layout.padding
   },
   title: {
     ...fonts.bodyBold,
     ...typography.xxl,
     color: colors.accent
-  },
-  history: {
-    ...fonts.body,
-    ...typography.base,
-    color: colors.foreground
   },
   space: {
     marginTop: layout.margin
